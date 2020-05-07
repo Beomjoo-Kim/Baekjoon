@@ -10,6 +10,10 @@ public class Main_2751 {
 	static int[] data = new int[1000001];
 	static int[] sorted = new int[1000001];  // 정렬 배열은 반드시 전역 변수로 선언 (필요할 때마다 배열을 생성하게 되면 불필요한 메모리사용)
 	
+	// 클래스 설계 시 static의 사용 지침
+	// 먼저 클래스의 멤버변수 중 모든 인스턴스에 공통된 값을 유지해야 하는 것이 있는지 살펴보고 있으면, static을 붙여준다.
+	// 작성한 메서드 중에서 인스턴스 변수를 사용하지 ㅇ낳는 메서드에 대해서 static을 붙일 것을 고려한다.
+	
 	static void merge(int[] a, int m, int middle, int n) {
 		// 시작점 m, 끝점 n, 중간점 middle
 		int i = m;
