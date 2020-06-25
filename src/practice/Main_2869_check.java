@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class MAin_2869_check {
+public class Main_2869_check {
 
 	static int V, A, B;
 	static long result;
