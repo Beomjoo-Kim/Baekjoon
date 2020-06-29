@@ -17,39 +17,7 @@ public class Main_11650_Solving {
 		}
 		return input;
 	}
-	
-	
-	// x축 증가하는 순서대로
-	public static void sortByX(String[] a) {
-	
-		for(int i = 0; i<a.length-1; i++) {
-			for(int j = 0; j<a.length-1; j++) {
-				if(a[j].charAt(0) > a[j+1].charAt(0)){
-					temp = a[j];
-					a[j] = a[j+1];
-					a[j+1] = temp;
-				}else if(a[j].charAt(0) == a[j+1].charAt(0)) {
-					sortByY(a);
-				}
-			}
-		}
-		
-	}
-	
-	//y축 증가하는 순서대로
-	public static void sortByY(String[] a) {
-			
-			for(int i = 0; i<a.length-1; i++) {
-				for(int j = 0; j<a.length-1; j++) {
-					if(a[j].charAt(2) > a[j+1].charAt(2)){
-						temp = a[j];
-						a[j] = a[j+1];
-						a[j+1] = temp;
-					}
-				}
-			}
-			
-		}
+
 	
 	//출력
 	public static void printArr(String[] a) {
@@ -59,10 +27,63 @@ public class Main_11650_Solving {
 	}
 	
 	
+	public static void mergeSort(String[] a, int m, int n, String[] sorted,int x) {
+		if(m<n) {
+			int middle = (m+n)/2;
+			mergeSort(a, m, middle, sorted, x);
+			mergeSort(a, middle+1, n, sorted, x);
+			merge(a, m, middle, n, sorted, x);
+		}
+	}
+	
+	public static void merge(String[] a, int m, int middle, int n, String[] sorted, int x) {
+		int i = m, j= middle+1, k=m;
+		while(i<=middle && j <= n) {
+			if(a[i].charAt(x)<=a[j].charAt(x)&&a[i].charAt(x+2)<=a[j].charAt(x+2)) {
+				sorted[k] = a[i];
+				i++;
+			}else {
+				sorted[k] = a[j];
+				j++;
+			}
+			k++;
+		}
+			
+			if(i>middle) {
+				for(int t = j; t<=n; t++) {
+					sorted[k] = a[t];
+					k++;
+				}
+			}
+			
+			else {
+				for(int t = i; t<=middle; t++) {
+					sorted[k] = a[t];
+					k++;
+				}
+			}
+			
+			for(int t = m; t<=n; t++) {
+				a[t] = sorted[t];
+			}
+		}
+	
+	
 	public static void main(String[] args) throws NumberFormatException, IOException{
 		n = Integer.parseInt(br.readLine());
+		String[] sorted = new String[n];
 		String[] arr = getLocation();
-		sortByX(arr);
+		
+		
+		mergeSort(arr, 0, n-1, sorted, 0);
+//		for(int i = 0; i<n-1; i++) {
+//			if(arr[i].charAt(0)==arr[i+1].charAt(0)) {
+////				mergeSort(arr, i, i+1, sorted, 2);
+//			}
+//		}
+		
+		
+//		sortByX(arr);
 		printArr(arr);
 	}
 
