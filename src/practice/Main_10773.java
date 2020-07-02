@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main_10773_solving {
+public class Main_10773 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static int K;
 	static int[] input;
