@@ -3,7 +3,6 @@ package practice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main_1181_check {
 	static int n, cnt, strLength;

@@ -26,7 +26,7 @@ public class Main_1259 {
 			if(check) System.out.println("yes");
 			else System.out.println("no");
 		}
-
+		sc.close();
 	}
 
 }

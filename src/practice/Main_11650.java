@@ -86,6 +86,7 @@ public class Main_11650 {
 		}
 		mergeSort(a, 0, N-1);
 		disp(a);
+		sc.close();
 	}
 
 }
