@@ -2,7 +2,7 @@ package practice;
 
 import java.util.Scanner;
 
-public class Main_2941_solving {
+public class Main_2941 {
 	static Scanner sc = new Scanner(System.in);
 	static char[] arr;
 	static int cnt;
@@ -16,13 +16,12 @@ public class Main_2941_solving {
 			if(arr[index+1] == '=' || arr[index+1] == '-') cnt--;
 		}
 		if(arr[index] == 'd' && arr.length>index+1) {
-			if(arr[index] == '-') cnt--;
+			if(arr[index+1] == '-') cnt--;
 		}
 		if(arr[index] == 'd' && arr.length>index+2) {
 			if	(arr[index+1] == 'z') {
-				cnt--;
 				if(arr[index+2] == '=') {
-					cnt--;
+					cnt-=2;
 				}
 			}
 		}
@@ -37,14 +36,14 @@ public class Main_2941_solving {
 		if(arr[index] == 's' && arr.length>index+1) {
 			if(arr[index+1] == '=') cnt--;
 		}
-		if(arr[index] == 'z' && arr.length>index+1) {
+		if(arr[index] == 'z' && arr.length>index+1 && index == 0) { //z로 시작하는 문자열일경우
 			if(arr[index+1] == '=')cnt--;
 		}
-//		if(arr[index] == 'z' && arr.length>index+1) {
-//			if(arr[index+1] == '=' && index-1>0) {
-//				if(arr[index-1]!='d')cnt--;
-//			}
-//		}
+		if(arr[index] == 'z' && arr.length>index+1 && index!=1) { //z= 인데, 앞에 d가 붙으면 안되는경우
+			if(arr[index+1] == '=' && index-1>0 && arr[index-1]!='d') {
+				cnt--;
+			}
+		}
 	}
 	
 	
