@@ -1,6 +1,8 @@
 package practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main_2108 {
@@ -22,23 +24,11 @@ public class Main_2108 {
 	
 	public static void getAvg() {
 		double sum = 0;
-		int count = 0;
 		for(int i = 0; i<input.length; i++) {
 			sum+=input[i];
-			count++;
 		}
-//		System.out.println(sum);
-//		System.out.println(count);
-		avg = sum/count;
-//		System.out.println(avg);
-		if(avg>=0) {
-			System.out.println((int)Math.round(avg));
-		}
-		else {
-			avg = Math.abs(avg);
-			System.out.println(-(int)Math.round(avg));
-			
-		}
+		avg = sum/input.length;
+		System.out.printf("%.0f\n",avg);
 	}
 	
 	public static void getMid() {
@@ -47,33 +37,34 @@ public class Main_2108 {
 	}
 	
 	public static void getMost() {
+		HashMap<Integer, Integer> m = new HashMap<Integer, Integer>();
 		int max = -1;
-		int index = 0;
-		int temp = 0;
-		for(int i = 0; i<input.length; i++) {
-			countNum[input[i]+4000]++;
-		}
-		for(int i = 0; i<countNum.length; i++) {
-			if(countNum[i]>max) {
-				max = countNum[i];
-				index = i;
+		ArrayList<Integer> al = new ArrayList<Integer>();
+		for(int i : input) {
+			if(m.containsKey(i)) {
+				m.put(i, m.get(i)+1);
+			}else {
+				m.put(i, 1);
 			}
 		}
-		for(int i = 0; i<countNum.length; i++) {
-			if(countNum[i]==max) {
-				sameCount[temp++] = i-4000;
+		for(int i : m.keySet()) {
+			if(max<m.get(i)) {
+				max = m.get(i);
 			}
 		}
-//		Arrays.sort(countNum);
-		if(sameCount[1]!=0) {
-			System.out.println(sameCount[1]);
+		for(int i : m.keySet()) {
+			if(max == m.get(i)) {
+				al.add(i);
+			}
 		}
-		else System.out.println(sameCount[0]);
+		Object[] res = al.toArray();
+		Arrays.sort(res);
+		if(res.length>1) System.out.println(res[1]);
+		else System.out.println(res[0]);
+		
 	}
 	
-	
 	public static void getRange() {
-		Arrays.sort(input);
 		range = input[0]-input[input.length-1];
 		System.out.println(Math.abs(range));
 	}
