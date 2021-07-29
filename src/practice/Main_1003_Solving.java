@@ -1,38 +1,31 @@
 package practice;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 public class Main_1003_Solving {
-	static int t;
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	static int t, n;
+	static int[] fib0 = new int[41];
+	static int[] fib1 = new int[41];
 	
-	static int get0(int n) {
-		if(n==0) return 1;
-		else if(n==1) return 0;
-		else return get0(n-1)+get0(n-2);
-	}
-	static int get1(int n) {
-		if(n==0) return 0;
-		else if(n==1) return 1;
-		else return get1(n-1)+get1(n-2);
-	}
-	
-	static void sol() throws NumberFormatException, IOException {
-		int n = Integer.parseInt(br.readLine());
-		bw.write(get0(n)+" "+get1(n)+"\n");
-	}
-	
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		t = Integer.parseInt(br.readLine());
-		for(int i = 0; i<t; i++) {
-			sol();
+	public static void getFib() {
+		fib0[0] = 1;
+		fib1[0] = 0;
+		fib0[1] = 0;
+		fib1[1] = 1;
+		for(int i = 2 ; i < fib0.length ; i++) {
+			fib0[i] = fib0[i-1] + fib0[i-2];
+			fib1[i] = fib1[i-1] + fib1[i-2];
 		}
-		br.close();
-		bw.close();
+	}
+	
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		t = sc.nextInt();
+		getFib();
+		for(int i = 0 ; i < t ; i++) {
+			n = sc.nextInt();
+			System.out.println(fib0[n] + " " + fib1[n]);
+		}
 	}
 }
