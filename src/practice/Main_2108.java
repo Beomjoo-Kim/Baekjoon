@@ -28,6 +28,7 @@ public class Main_2108 {
 			sum+=input[i];
 		}
 		avg = sum/input.length;
+		if(avg<0 && avg>-1) avg = 0;
 		System.out.printf("%.0f\n",avg);
 	}
 	

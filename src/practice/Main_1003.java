@@ -2,7 +2,7 @@ package practice;
 
 import java.util.Scanner;
 
-public class Main_1003_Solving {
+public class Main_1003 {
 	static int t, n;
 	static int[] fib0 = new int[41];
 	static int[] fib1 = new int[41];
