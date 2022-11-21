@@ -1,28 +1,41 @@
 package practice;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main_10845_solving {
-	static Scanner sc = new Scanner(System.in);
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static int cnt, N;
 	static int[] arr ;
 	static String order;
+	static String[] desc;
 
-	static void sol() {
+	static void sol() throws IOException {
 		for(int i = 0; i<N; i++) {
-			order = sc.next();
-			if (order.equals("push"))
-				push();
-			if (order.equals("pop"))
-				pop();
-			if(order.equals("size"))
-				size();
-			if (order.equals("empty"))
-				empty();
-			if (order.equals("front"))
-				front();
-			if (order.equals("back"))
-				back();
+			order = br.readLine();
+			desc = order.split(" ");
+			switch (desc[0]) {
+				case ("push"):
+					push();
+					break;
+				case ("pop"):
+					pop();
+					break;
+				case ("size"):
+					size();
+					break;
+				case ("empty"):
+					empty();
+					break;
+				case ("front"):
+					front();
+					break;
+				case ("back"):
+					back();
+					break;
+			}
 		}
 		
 	}
@@ -31,7 +44,7 @@ public class Main_10845_solving {
 		for(int i = cnt; i<N-1; i++) {
 			arr[i+1]=arr[i];
 		}
-		arr[cnt++] = sc.nextInt();
+		arr[cnt++] = Integer.parseInt(desc[1]);
 	}
 	
 	static void pop() {
@@ -42,7 +55,8 @@ public class Main_10845_solving {
 				arr[i] = arr[i+1];
 			}
 		}
-		cnt--;
+		if(cnt <= 0) cnt = 0;
+		else cnt--;
 	}
 	
 	static void size() {
@@ -63,9 +77,10 @@ public class Main_10845_solving {
 		if(cnt==0)System.out.println("-1");
 		else System.out.println(arr[cnt-1]);
 	}
-	
-	public static void main(String[] args) {
-		N = sc.nextInt();
+
+	public static void main(String[] args) throws IOException {
+		String s = br.readLine();
+		N = Integer.parseInt(s);
 		arr = new int[N];
 		sol();
 	}
