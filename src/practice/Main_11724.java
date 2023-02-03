@@ -44,7 +44,7 @@ public class Main_11724 {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        arr = new ArrayList<>[n + 1];
+        arr = new ArrayList[n + 1];
         chk = new int[n + 1];
 
         for (int i = 0; i < m; i++) {
